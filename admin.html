@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - HAZEM COIFF</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    select, button {
+      padding: 10px;
+      margin: 10px 5px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ff4d5a;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📅 Liste des rendez-vous</h1>
+
+  <!-- تصفية حسب المكان -->
+  <label>Filtrer par localisation:</label>
+  <select id="filter">
+    <option value="all">Tout</option>
+    <option value="MEGRINE">MEGRINE</option>
+    <option value="BOUMHALL">BOUMHALL</option>
+  </select>
+
+  <button id="clearAll">Supprimer tous les rendez-vous</button>
+
+  <div id="list"></div>
+
+  <script>
+    const list = document.getElementById("list");
+    const filter = document.getElementById("filter");
+    const clearAll = document.getElementById("clearAll");
+
+    // جلب المواعيد من localStorage
+    let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // عرض المواعيد
+    function displayBookings(filterValue = "all") {
+      list.innerHTML = "";
+
+      let filtered = bookings;
+      if(filterValue !== "all") {
+        filtered = bookings.filter(b => b.location === filterValue);
+      }
+
+      if(filtered.length === 0) {
+        list.innerHTML = "<p>ما فما حتى موعد</p>";
+      }
+
+      filtered.forEach((b, i) => {
+        list.innerHTML += `
+          <div class="card">
+            <p><strong>Nom:</strong> ${b.name}</p>
+            <p><strong>Téléphone:</strong> ${b.phone}</p>
+            <p><strong>Service:</strong> ${b.service}</p>
+            <p><strong>Localisation:</strong> ${b.location}</p>
+            <p><strong>Date:</strong> ${b.date}</p>
+            <p><strong>Heure:</strong> ${b.time}</p>
+            <button onclick="deleteBooking(${i})">❌ Supprimer</button>
+          </div>
+        `;
+      });
+    }
+
+    // حذف موعد محدد
+    function deleteBooking(index) {
+      bookings.splice(index, 1);
+      localStorage.setItem("bookings", JSON.stringify(bookings));
+      displayBookings(filter.value);
+    }
+
+    // حذف جميع المواعيد
+    clearAll.addEventListener("click", () => {
+      if(confirm("هل تريد حقًا حذف جميع المواعيد؟")) {
+        bookings = [];
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        displayBookings();
+      }
+    });
+
+    // تغيير الفلترة
+    filter.addEventListener("change", () => {
+      displayBookings(filter.value);
+    });
+
+    // عرض المواعيد أول مرة
+    displayBookings();
+  </script>
+
+</body>
+</html>
+

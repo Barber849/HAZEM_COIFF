@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>HAZEM COIFF</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>HAZEM COIFF</h1>
+    <p>Style. Précision. Confiance.</p>
+  </header>
+
+  <section class="booking">
+    <h2>Prendre un rendez-vous</h2>
+
+    <form id="bookingForm">
+      <input type="text" id="name" placeholder="Nom" required>
+      <input type="tel" id="phone" placeholder="Téléphone" required>
+
+      <select id="service" required>
+        <option value="">Service</option>
+        <option>Coupe</option>
+        <option>Barbe</option>
+        <option>Coupe + Barbe</option>
+      </select>
+
+      <select id="location" required>
+        <option value="">Choisir la localisation</option>
+        <option>MEGRINE</option>
+        <option>BOUMHALL</option>
+      </select>
+
+      <input type="date" id="date" required>
+      <input type="time" id="time" required>
+
+      <button type="submit">Réserver</button>
+    </form>
+
+    <p id="message"></p>
+  </section>
+
+  <footer>
+    <p>© 2026 HAZEM COIFF</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
