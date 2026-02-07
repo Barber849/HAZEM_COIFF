@@ -2,48 +2,27 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>HAZEM COIFF</title>
+  <title>HAZEM COIFF | Réservation</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
+  <div class="container">
     <h1>HAZEM COIFF</h1>
-    <p>Style. Précision. Confiance.</p>
-  </header>
+    <p class="subtitle">Luxury Barber Experience</p>
 
-  <section class="booking">
-    <h2>Prendre un rendez-vous</h2>
+    <input type="text" id="name" placeholder="Nom et Prénom">
+    <input type="tel" id="phone" placeholder="Numéro de téléphone">
+    <input type="date" id="date">
 
-    <form id="bookingForm">
-      <input type="text" id="name" placeholder="Nom" required>
-      <input type="tel" id="phone" placeholder="Téléphone" required>
+    <select id="place">
+      <option value="">Choisir le lieu</option>
+      <option value="MEGRINE">MEGRINE</option>
+      <option value="BOUMHALL">BOUMHALL</option>
+    </select>
 
-      <select id="service" required>
-        <option value="">Service</option>
-        <option>Coupe</option>
-        <option>Barbe</option>
-        <option>Coupe + Barbe</option>
-      </select>
-
-      <select id="location" required>
-        <option value="">Choisir la localisation</option>
-        <option>MEGRINE</option>
-        <option>BOUMHALL</option>
-      </select>
-
-      <input type="date" id="date" required>
-      <input type="time" id="time" required>
-
-      <button type="submit">Réserver</button>
-    </form>
-
-    <p id="message"></p>
-  </section>
-
-  <footer>
-    <p>© 2026 HAZEM COIFF</p>
-  </footer>
+    <button onclick="sendWhatsApp()">Réserver</button>
+  </div>
 
   <script src="script.js"></script>
 </body>

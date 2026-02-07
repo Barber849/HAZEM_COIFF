@@ -1,28 +1,24 @@
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
+function sendWhatsApp() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
-  const service = document.getElementById("service").value;
-  const location = document.getElementById("location").value;
   const date = document.getElementById("date").value;
-  const time = document.getElementById("time").value;
+  const place = document.getElementById("place").value;
 
-  const booking = { name, phone, service, location, date, time };
+  if (!name || !phone || !date || !place) {
+    alert("عبي جميع الخانات");
+    return;
+  }
 
-  // تخزين المواعيد
-  let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
-  bookings.push(booking);
-  localStorage.setItem("bookings", JSON.stringify(bookings));
+  const message =
+`📅 Nouveau rendez-vous - HAZEM COIFF
 
-  document.getElementById("message").textContent = "✅ Rendez-vous enregistré !";
-  this.reset();
+👤 Nom: ${name}
+📞 Téléphone: ${phone}
+📍 Lieu: ${place}
+🗓 Date: ${date}`;
 
-  // رسالة WhatsApp للعميل
-  // الرقم اللي كتب العميل: phone
-  const clientNumber = phone.startsWith("0") ? "216" + phone.slice(1) : phone;
-  const text = `✅ Bonjour ${name} !\nVotre rendez-vous chez HAZEM COIFF est confirmé:\nService: ${service}\nLocalisation: ${location}\nDate: ${date}\nHeure: ${time}\nMerci !`;
-  const whatsappURL = `https://api.whatsapp.com/send?phone=${clientNumber}&text=${encodeURIComponent(text)}`;
+  const adminNumber = "21694035519";
 
-  window.open(whatsappURL, "_blank"); // يفتح WhatsApp للعميل
-});
+  const url = `https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`;
+  window.open(url, "_blank");
+}

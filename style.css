@@ -1,52 +1,46 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
   background: #0f0f0f;
+  font-family: Arial, sans-serif;
   color: #fff;
 }
 
-header {
-  text-align: center;
-  padding: 40px;
-  background: #111;
-}
-
-.booking {
+.container {
   max-width: 400px;
-  margin: 40px auto;
-  padding: 20px;
+  margin: 80px auto;
+  padding: 30px;
   background: #1a1a1a;
-  border-radius: 10px;
-}
-
-.booking h2 {
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(212,175,55,0.2);
   text-align: center;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+h1 {
+  color: #d4af37;
 }
 
-input, select, button {
-  padding: 10px;
-  border-radius: 5px;
+.subtitle {
+  margin-bottom: 25px;
+  color: #ccc;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
   border: none;
+  border-radius: 6px;
 }
 
 button {
-  background: #e63946;
-  color: white;
+  width: 100%;
+  padding: 14px;
+  background: #d4af37;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
   cursor: pointer;
 }
 
 button:hover {
-  background: #ff4d5a;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
+  background: #b8962e;
 }
