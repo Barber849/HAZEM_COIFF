@@ -14,6 +14,18 @@
 </head>
 <body>
 
+<script>
+  // كلمة السر
+  const adminPassword = "1920"; // غيّرها كما تحب
+
+  const password = prompt("🔒 Entrez le mot de passe pour accéder à l'Admin Page:");
+
+  if(password !== adminPassword) {
+    alert("❌ Mot de passe incorrect ! Accès refusé.");
+    window.location.href = "index.html"; // يرجع للصفحة الرئيسية
+  }
+</script>
+
   <h1>📅 Liste des rendez-vous</h1>
 
   <label>Filtrer par localisation:</label>
@@ -38,13 +50,9 @@
       list.innerHTML = "";
 
       let filtered = bookings;
-      if(filterValue !== "all") {
-        filtered = bookings.filter(b => b.location === filterValue);
-      }
+      if(filterValue !== "all") filtered = bookings.filter(b => b.location === filterValue);
 
-      if(filtered.length === 0) {
-        list.innerHTML = "<p>ما فما حتى موعد</p>";
-      }
+      if(filtered.length === 0) list.innerHTML = "<p>ما فما حتى موعد</p>";
 
       filtered.forEach((b, i) => {
         list.innerHTML += `
